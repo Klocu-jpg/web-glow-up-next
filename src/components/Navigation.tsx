@@ -1,6 +1,7 @@
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,12 +18,12 @@ export const Navigation = () => {
     <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-red-500 rounded transform rotate-45 relative">
               <div className="absolute inset-1 border-2 border-white rounded"></div>
             </div>
             <span className="text-xl font-bold">PRZEGLĄDY DOMOWE</span>
-          </div>
+          </Link>
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
@@ -50,6 +51,13 @@ export const Navigation = () => {
               >
                 Kontakt
               </button>
+              <Link 
+                to="/admin"
+                className="flex items-center space-x-1 hover:text-red-400 transition-colors duration-200"
+              >
+                <Settings className="w-4 h-4" />
+                <span>Admin</span>
+              </Link>
             </div>
           </div>
           
@@ -91,6 +99,14 @@ export const Navigation = () => {
             >
               Kontakt
             </button>
+            <Link 
+              to="/admin"
+              className="flex items-center space-x-1 px-3 py-2 text-white hover:text-red-400 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Settings className="w-4 h-4" />
+              <span>Admin</span>
+            </Link>
           </div>
         </div>
       )}
